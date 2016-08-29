@@ -1,4 +1,4 @@
-@extends('principal')
+@extends('layout.principal')
 @section('conteudo')
 
 @if(empty(@produtos))
@@ -6,6 +6,15 @@
 @else
 
 	<h1>Listagem de Produtos</h1>
+
+	@if(old('nome'))
+
+		<div class="alert alert-success">
+			<strong>Sucesso!</strong> O produto {{old(@nome)}} foi adicionado.
+		</div>
+
+	@endif
+
 	<table class="table table-striped table-bordered table-hover">
 		@foreach($produtos as $p)
 			<tr class="{{$p->quantidade<=1 ? 'danger' : ''}}">
@@ -13,8 +22,19 @@
 				<td>{{$p->valor}}</td>
 				<td>{{$p->descricao}}</td>
 				<td>{{$p->quantidade}}</td>
-				<td><a href="/produtos/mostra/{{$p->id}}">
+				<td>
+					<a href="/produtos/mostra/{{$p->id}}">
 						<span class="glyphicon glyphicon-search"></span>
+					</a>
+				</td>
+				<td>
+					<a href="/produtos/edita/{{$p->id}}">
+						<span class="glyphicon glyphicon-pencil"></span>
+					</a>
+				</td>
+				<td>
+					<a href="{{action('ProdutoController@remove', $p->id)}}">
+						<span class="glyphicon glyphicon-trash"></span>
 					</a>
 				</td>
 			</tr>

@@ -21,11 +21,11 @@ class DatabaseSeeder extends Seeder
 class ProdutoTableSeeder extends Seeder{
 		public function run(){
 			DB::insert('insert into produtos(nome, quantidade, valor, descricao) values(?,?,?,?)', 
-				array('Geladeira', 2, 5900.00, 'Syde by side com gelo na porta'));
+				array('Geladeira', 2, 5.900.00, 'Syde by side com gelo na porta'));
 			DB::insert('insert into produtos(nome, quantidade, valor, descricao) values(?,?,?,?)', 
 				array('Fogão', 5, 950.00, 'Painel automático e forno elétrico'));
 			DB::insert('insert into produtos(nome, quantidade, valor, descricao) values(?,?,?,?)', 
-				array('Microondas', 1, 1520.00, 'Manda SMS quando termina de esquentar'));
+				array('Microondas', 1, 1.520.00, 'Manda SMS quando termina de esquentar'));
 	}
 }
 
