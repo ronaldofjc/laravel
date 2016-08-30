@@ -23,8 +23,8 @@ class ProdutoController extends Controller{
 		return view('produto.formulario');
 	}
 
-	public function adiciona(){
-		Produto::create(Request::all());
+	public function adiciona(ProdutosRequest $request){
+		Produto::create($request::all());
 		return redirect()->action('ProdutoController@lista')->withInput(Request::only('nome'));
 	}
 
@@ -42,9 +42,9 @@ class ProdutoController extends Controller{
 		return view('produto.alterar')->with('p', $produto);
 	}
 
-	public function alterar($id){
+	public function alterar(ProdutosRequest $request, $id){
 		$produto = Produto::find($id);
-		$params = Request::all();
+		$params = $request->all();
 		$produto->fill($params)->save();
 		return redirect()->action('ProdutoController@lista')->withInput(Request::only('nome'));
 	}

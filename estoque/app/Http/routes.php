@@ -30,3 +30,12 @@ Route::get('/produtos/remove/{id}', 'ProdutoController@remove');
 Route::get('/produtos/edita/{id}', 'ProdutoController@edita');
 
 Route::post('/produtos/alterar/{id}', 'ProdutoController@alterar');
+
+Route::get('home', 'HomeController@index');
+
+Route::controllers(['auth'=>'Auth\AuthController', 'password'=>'Auth\PasswordController',]);
+Route::auth();
+
+//Route::get('/home', 'HomeController@index');
+
+//Route::get('/login', 'LoginController@login');
